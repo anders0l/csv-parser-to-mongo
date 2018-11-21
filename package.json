@@ -1,0 +1,67 @@
+{
+	"name": "csv-parser-to-mongo",
+	"version": "1.0.0",
+	"private": true,
+	"engines": {
+		"node": ">=8",
+		"npm": ">=3.10"
+	},
+	"babel": {
+		"presets": [
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
+		],
+		"plugins": [
+			"source-map-support"
+		],
+		"ignore": [
+			"node_modules"
+		]
+	},
+	"dependencies": {
+		"@babel/plugin-proposal-class-properties": "^7.1.0",
+		"axios": "^0.18.0",
+		"crypto-random-string": "^1.0.0",
+		"csvtojson": "^2.0.8",
+		"dotenv-safe": "^6.1.0",
+		"mongodb": "^3.1.10"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.1.2",
+		"@babel/core": "^7.1.2",
+		"@babel/node": "7.0.0",
+		"@babel/polyfill": "7.0.0",
+		"@babel/preset-env": "7.1.0",
+		"babel-eslint": "^10.0.1",
+		"babel-jest": "^23.6.0",
+		"babel-loader": "8.0.4",
+		"babel-plugin-source-map-support": "^2.0.1",
+		"cross-env": "^5.2.0",
+		"eslint": "^5.6.1",
+		"eslint-config-airbnb": "^17.1.0",
+		"husky": "^1.1.2",
+		"lint-staged": "^7.3.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.js": [
+			"npx eslint",
+			"git add --force"
+		]
+	},
+	"scripts": {
+		"lint-fix": "npx eslint --fix ./*.js",
+		"lint": "npx eslint ./*.js",
+		"start": "babel-node run.js"
+	}
+}
